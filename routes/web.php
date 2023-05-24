@@ -39,8 +39,19 @@ Route::get('/daftar_nilai', function () {
 Route::get('/siswa',[SiswaController::class, 'datasiswa']);
 
 //mengarahkan ke controller dashboardController
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('index'); 
 
+//prefix atau grup
+Route::prefix('admin')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('index'); 
 Route::get('/staff', [StaffController::class, 'index']);
+
+//root pegawai 
 Route::get('/pegawai',[PegawaiController::class, 'index']);
+Route::get('/pegawai/create',[PegawaiController::class, 'create']);
+Route::post('/pegawai/store', [PegawaiController::class, 'store']);
+
+// Root Divii
 Route::get('/divisi',[DivisiController::class, 'index']);
+Route::get('/divisi/create', [DivisiController::class, 'create']);
+Route::post('/divisi/store', [DivisiController::class, 'store']);
+});

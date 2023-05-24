@@ -1,9 +1,9 @@
 @extends('admin.layout.appadmin')
 
 @section('content')
-                        <h1 class="mt-4">Tabel Product</h1>
+                        <h1 class="mt-4">Tabel Pegawai</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
                         <div class="card mb-4">
@@ -17,7 +17,7 @@
                             <div class="card-header">
                                 <!-- <i class="fas fa-table me-1"></i>
                                 DataTable Example -->
-                                <a href="index.php?url=produk_form" class="btn btn-primary btn-sm">Tambah</a>
+                                <a href="{{url('admin/pegawai/create')}}" class="btn btn-primary btn-sm">Tambah</a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -67,7 +67,13 @@
                                             <td>{{$p->tmp_lahir}}</td>
                                             <td>{{$p->tgl_lahir}}</td>
                                             <td>{{$p->alamat}}</td>
-                                            <td>{{$p->foto}}</td>
+                                            <td>
+                                                @empty($p->foto)
+                                                    <img src="{{url('admin/image/noPhoto.jpg')}}" width="50%">
+                                                @else
+                                                <img src="{{url('admin/image')}}/{{$p->foto}}" width="50%">
+                                                @endempty
+                                            </td>
                                             <td>
                                                 <form action="#" method="POST">
                                                     <a href="" class="btn btn-info btn-sm">Detail</a>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pegawai;
 use App\Models\Divisi;
 use App\Models\Jabatan;
+use DB;
 class PegawaiController extends Controller
 {
     /**
@@ -26,7 +27,14 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        //arahkan ke folder pegawai
+        $divisi = DB::table('divisi')->get();
+        $jabatan = DB::table('jabatan')->get();
+        $pegawai = Pegawai::join('divisi','pegawai.divisi_id','=', 'divisi.id')
+        ->join('jabatan','pegawai.jabatan_id','=', 'jabatan.id')
+        ->select('pegawai.*', 'divisi.nama as divisi', 'jabatan.nama as jabatan')
+        ->get();
+        return view ('admin.pegawai.create', compact('pegawai','divisi','jabatan'));
     }
 
     /**
@@ -34,7 +42,26 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //fungsi menambahkan pegawai
+        if(!empty($request->foto)){
+            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
+            $request->foto->move(public_path('admin/image'),$fileName);
+        }
+        else{
+            $fileName = '';
+        }
+        DB::table('pegawai')->insert([
+            'nip'=> $request->nip,
+            'nama'=> $request->nama,
+            'jabatan_id'=> $request->jabatan_id,
+            'divisi_id'=> $request->divisi_id,
+            'gender'=> $request->gender,
+            'tmp_lahir'=> $request->tmp_lahir,
+            'tgl_lahir'=> $request->tgl_lahir,
+            'alamat'=> $request->alamat,
+            'foto'=> $fileName,
+        ]);
+        return redirect('admin/pegawai');
     }
 
     /**

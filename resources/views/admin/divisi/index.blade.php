@@ -1,7 +1,7 @@
 @extends('admin.layout.appadmin')
 
 @section('content')
-                        <h1 class="mt-4">Tabel Product</h1>
+                        <h1 class="mt-4">Tabel Divisi</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
@@ -17,7 +17,7 @@
                             <div class="card-header">
                                 <!-- <i class="fas fa-table me-1"></i>
                                 DataTable Example -->
-                                <a href="index.php?url=produk_form" class="btn btn-primary btn-sm">Tambah</a>
+                                <a href="{{url('admin/divisi/create')}}" class="btn btn-primary btn-sm">Tambah</a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
