@@ -75,17 +75,42 @@ class PegawaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        //ini akan diarahkan ke file edit yang ada di view
+        //menggunakan query builder
+        $divisi = DB::table('divisi')->get();
+        $jabatan = DB::table('jabatan')->get();
+        $pegawai = DB::table('pegawai')->where('id', $id)->get();
+
+        return view ('admin.pegawai.edit', compact('pegawai', 'divisi', 'jabatan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
+        if(!empty($request->foto)){
+            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
+            $request->foto->move(public_path('admin/image'),$fileName);
+        }
+        else{
+            $fileName = '';
+        }
         //
+        DB::table('pegawai')->where('id', $request->id)->update([
+            'nip'=> $request->nip,
+            'nama'=> $request->nama,
+            'jabatan_id'=> $request->jabatan_id,
+            'divisi_id'=> $request->divisi_id,
+            'gender'=> $request->gender,
+            'tmp_lahir'=> $request->tmp_lahir,
+            'tgl_lahir'=> $request->tgl_lahir,
+            'alamat'=> $request->alamat,
+            'foto'=> $fileName,
+        ]);
+        return redirect('admin/pegawai');
     }
 
     /**
