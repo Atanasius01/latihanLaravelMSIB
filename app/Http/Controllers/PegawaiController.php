@@ -70,6 +70,12 @@ class PegawaiController extends Controller
     public function show(string $id)
     {
         //
+        $pegawai= Pegawai::join('divisi', 'pegawai.divisi_id', '=', 'divisi.id')
+        ->join('jabatan','pegawai.jabatan_id', '=', 'jabatan.id')
+        ->select('pegawai.*', 'divisi.nama as divisi', 'jabatan.nama as jabatan')
+        ->where('pegawai.id', $id)
+        ->get();
+        return view('admin.pegawai.detail', compact('pegawai'));
     }
 
     /**
@@ -119,5 +125,7 @@ class PegawaiController extends Controller
     public function destroy(string $id)
     {
         //
+        DB::table('pegawai')->where('id', $id)->delete();
+        return redirect('admin/pegawai');
     }
 }

@@ -47,10 +47,33 @@
                                             <td>{{$d->nama}}</td>
                                             <td>
                                                 <form action="#" method="POST">
-                                                    <a href="" class="btn btn-info btn-sm">Detail</a>
+                                                    <a href="{{url('admin/divisi/show/'.$d->id)}}" class="btn btn-info btn-sm">Detail</a>
                                                     <a href="{{url('admin/divisi/edit/'.$d->id)}}" class="btn btn-warning btn-sm">Ubah</a>
-                                                    <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus">Hapus</button>
-                                                    <input type="hidden" name="idx" value="">
+                                                    {{-- <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="return confirm('Anda yakin akan dihahapus')">Hapus</button>
+                                                    <!-- Button trigger modal --> --}}
+<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$d->id}}">
+    Hapus
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Apakah anda sudah yakin untuk menghapus data ini ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-bs-dismiss="modal">Kembali</button>
+          <a href="{{url('admin/divisi/delete/'.$d->id)}}" class="btn btn-danger">Hapus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+                                                    {{-- <input type="hidden" name="idx" value=""> --}}
                                                 </form>
                                             </td>
                                         </tr>

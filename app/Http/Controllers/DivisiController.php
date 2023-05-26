@@ -41,9 +41,11 @@ class DivisiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $divisi = DB::table('divisi')->where('id', $id)->get();
+        return view ('admin.divisi.detail', compact('divisi'));
     }
 
     /**
@@ -75,5 +77,7 @@ class DivisiController extends Controller
     public function destroy(string $id)
     {
         //
+        DB::table('divisi')->where('id', $id)->delete();
+        return redirect('admin/divisi');
     }
 }
