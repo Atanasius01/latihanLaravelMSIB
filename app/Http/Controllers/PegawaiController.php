@@ -129,3 +129,4 @@ class PegawaiController extends Controller
         return redirect('admin/pegawai');
     }
 }
+    

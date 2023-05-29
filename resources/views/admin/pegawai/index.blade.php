@@ -78,8 +78,28 @@
                                                 <form action="#" method="POST">
                                                     <a href="{{url('admin/pegawai/show/'.$p->id)}}" class="btn btn-info btn-sm">Detail</a>
                                                     <a href="{{url('admin/pegawai/edit/'.$p->id)}}" class="btn btn-warning btn-sm">Ubah</a>
-                                                    <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus">Hapus</button>
-                                                    <input type="hidden" name="idx" value="">
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$p->id}}">
+                                                        Hapus
+                                                      </button>
+                                                      
+                                                      <!-- Modal -->
+                                                      <div class="modal fade" id="exampleModal{{$p->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                              Apakah anda sudah yakin untuk menghapus {{$p->nama}} ?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <button type="button" class="btn btn-info" data-bs-dismiss="modal">Kembali</button>
+                                                              <a href="{{url('admin/pegawai/delete/'.$p->id)}}" class="btn btn-danger">Hapus</a>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
                                                 </form>
                                             </td>
                                         </tr>
