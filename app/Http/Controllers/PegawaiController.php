@@ -58,6 +58,7 @@ class PegawaiController extends Controller
             'gender'=> $request->gender,
             'tmp_lahir'=> $request->tmp_lahir,
             'tgl_lahir'=> $request->tgl_lahir,
+            'kekayaan'=> $request->kekayaan,
             'alamat'=> $request->alamat,
             'foto'=> $fileName,
         ]);
@@ -113,6 +114,7 @@ class PegawaiController extends Controller
             'gender'=> $request->gender,
             'tmp_lahir'=> $request->tmp_lahir,
             'tgl_lahir'=> $request->tgl_lahir,
+            'kekayaan'=> $request->kekayaan,
             'alamat'=> $request->alamat,
             'foto'=> $fileName,
         ]);

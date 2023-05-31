@@ -18,6 +18,7 @@
         <p><b>ID:</b> {{$p->id}}</p>
         <p><b>Tanggal Lahir:</b> {{$p->tgl_lahir}}</p>
         <p><b>Tempat Lahir:</b> {{$p->tmp_lahir}}</p>
+        <p><b>Kekayaan : </b> {{$p->kekayaan}}</p>
         <p><b>Jenis Kelamin:</b> {{$p->gender}}</p>
         </div>
         <div class="project-info-box mt-0 mb-0">
