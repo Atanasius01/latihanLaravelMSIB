@@ -17,7 +17,7 @@
                             <div class="card-header">
                                 <!-- <i class="fas fa-table me-1"></i>
                                 DataTable Example -->
-                                <a href="#" class="btn btn-primary btn-sm">Tambah</a>
+                                <a href="{{url('admin/jabatan/create')}}" class="btn btn-primary btn-sm">Tambah</a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -47,8 +47,8 @@
                                             <td>{{$j->nama}}</td>
                                             <td>
                                                 <form action="#" method="POST">
-                                                    <a href="#" class="btn btn-info btn-sm">Detail</a>
-                                                    <a href="#" class="btn btn-warning btn-sm">Ubah</a>
+                                                    <a href="{{url('admin/jabatan/edit/'.$j->id)}}" class="btn btn-info btn-sm">Detail</a>
+                                                    <a href="{{url('admin/jabatan/edit/'.$j->id)}}" class="btn btn-warning btn-sm">Ubah</a>
                                                     {{-- <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="return confirm('Anda yakin akan dihahapus')">Hapus</button>
                                                     <!-- Button trigger modal --> --}}
 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">

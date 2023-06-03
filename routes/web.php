@@ -19,6 +19,7 @@ use App\Http\Controllers\JabatanController;
 */
 
 Route::get('/', function () {
+    Alert::success('Selamat Datang');
     return view('welcome');
 });
 
@@ -65,4 +66,8 @@ Route::get('/divisi/show/{id}', [DivisiController::class, 'show']);
 Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy']);
 
 Route::get('/jabatan', [JabatanController::class, 'index']);
+Route::get('/jabatan/create', [JabatanController::class, 'create']);
+Route::post('/jabatan/store', [JabatanController::class, 'store']);
+Route::post('/jabatan/update', [JabatanController::class, 'update']); 
+Route::get('/jabatan/edit/{id}', [JabatanController::class, 'edit']);
 });

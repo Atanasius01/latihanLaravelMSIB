@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jabatan;
 use DB;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class JabatanController extends Controller
 {
@@ -24,6 +26,7 @@ class JabatanController extends Controller
     public function create()
     {
         //
+        return view ('admin.jabatan.create');
     }
 
     /**
@@ -32,6 +35,11 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('jabatan')->insert([
+            'nama'=> $request->nama,
+        ]);
+        Alert::success('Jabatan', 'Berhasil Menambahkan Jabatan');
+        return redirect('admin/jabatan')->with('success', 'Task Created Successfully!');
     }
 
     /**
@@ -45,17 +53,25 @@ class JabatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
+        $jabatan = DB::table('jabatan')->where('id', $id)->get();
+
+        return view ('admin.jabatan.edit', compact('jabatan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         //
+        DB::table('jabatan')->where('id', $request->id)->update([
+            'nama'=> $request->nama,
+        ]);
+        Alert::info('Jabatan', 'Berhasil Mengedit Jabatan');
+        return redirect('admin/jabatan')->with('success', 'Task Created Successfully!');
     }
 
     /**
