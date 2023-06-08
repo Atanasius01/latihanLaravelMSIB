@@ -55,6 +55,10 @@ Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
 Route::post('/pegawai/update', [PegawaiController::class, 'update']);
 Route::get('/pegawai/show/{id}', [PegawaiController::class, 'show']);
 Route::get('/pegawai/delete/{id}', [PegawaiController::class, 'destroy']);
+Route::get('generate-pdf', [PegawaiController::class, 'generatePDF']);
+Route::get('/pegawai/pegawaiPDF', [PegawaiController::class, 'pegawaiPDF']);
+Route::get('pegawai/exportexcel/', [PegawaiController::class, 'exportExcel']);
+Route::post('/pegawai/importexcel', [PegawaiController::class, 'importExcel']);
 
 // Route Divisi
 Route::get('/divisi',[DivisiController::class, 'index']);
@@ -64,6 +68,7 @@ Route::get('/divisi/edit/{id}', [DivisiController::class, 'edit']);
 Route::post('/divisi/update/', [DivisiController::class, 'update']);
 Route::get('/divisi/show/{id}', [DivisiController::class, 'show']);
 Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy']);
+
 
 Route::get('/jabatan', [JabatanController::class, 'index']);
 Route::get('/jabatan/create', [JabatanController::class, 'create']);

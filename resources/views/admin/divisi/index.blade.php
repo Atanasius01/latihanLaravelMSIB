@@ -20,7 +20,7 @@
                                 <a href="{{url('admin/divisi/create')}}" class="btn btn-primary btn-sm">Tambah</a>
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table id="example">
                                     <thead>
                                         <tr>
                                         <th>No</th> 
@@ -86,4 +86,5 @@
                             </div>
                             </div>
                             </div>
+
 @endsection
